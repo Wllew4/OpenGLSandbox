@@ -1,0 +1,19 @@
+#Python
+__pycache__
+
+#VSCode
+.vscode
+
+#Visual Studio
+.vs
+bin/
+obj/
+*.sln
+*.vcxproj
+*.vcxproj.user
+*.csproj
+*.vcproj
+
+#GNU Make
+Makefile
+*.make
