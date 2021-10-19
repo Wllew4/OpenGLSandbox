@@ -20,6 +20,8 @@ void ShaderProgram::appendShader(const char* file, GLuint type)
 
 void ShaderProgram::link()
 {
+    glBindAttribLocation(shader_program, 0, "vp");
+    glBindAttribLocation(shader_program, 1, "frag_color");
     glLinkProgram(shader_program);
 }
 
