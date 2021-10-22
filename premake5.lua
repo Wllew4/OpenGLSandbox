@@ -13,8 +13,9 @@ project "Sandbox"
     targetname "sandbox"
     files
     {
-        "src/**.h",
-        "src/**.cpp"
+        "src/**.cpp",
+        "src/**.c",
+        "src/**.h"
     }
     includedirs
     {

@@ -1,9 +1,12 @@
 import os
 import shutil
 
-from CONFIG import BUILD_SYSTEM, MAKE_BINARY, premake_s, get_premake_property
+from CONFIG import BUILD_SYSTEM, MAKE_BINARY, get_premake_property
 
-bin_path = os.path.join(os.path.dirname(__file__), '..', get_premake_property('targetdir'), get_premake_property('targetname'))
+bin_path = os.path.join(
+    os.path.dirname(__file__), '..',
+    get_premake_property('targetdir'),
+    get_premake_property('targetname') + '.exe')
 
 if os.path.exists(bin_path):
     print('Removing last sucessful build')
@@ -20,10 +23,9 @@ supported_vs_versions = [
 
 if BUILD_SYSTEM in supported_vs_versions:
     workspace_name += '.sln'
-    print(workspace_name)
     sln_path = os.path.join(os.path.dirname(__file__), '..', workspace_name)
     if shutil.which('msbuild') is not None:
-	    print('Building with Visual Studio:')
+	    print('Building with Visual Studio: ' + workspace_name)
 	    os.system('msbuild ' + workspace_name)
     else:
 	    print('Could not find msbuild! Make sure it is added to PATH')
