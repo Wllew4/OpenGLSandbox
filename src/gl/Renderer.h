@@ -2,21 +2,22 @@
 
 #include "glIncludes.h"
 #include "VertexArray.h"
-// #include "demos/Demo.h"
 #include <vector>
 #include <chrono>
+
+//  forward declaration
+class Demo;
 
 class Renderer
 {
 private:
     std::vector<VertexArray> queue;
     GLFWwindow* window;
-    // std::chrono::time_point<std::chrono::steady_clock> lastTimestamp = std::chrono::steady_clock::now();
-
-    // Demo& demo;
+    Demo& demo;
+    std::chrono::time_point<std::chrono::steady_clock> lastTimestamp = std::chrono::steady_clock::now();
     
 public:
-    Renderer(int width, int height, const char* title);
+    Renderer(int width, int height, const char* title, Demo& demo);
 
     void queueVAO(VertexArray vao);
     void startRenderLoop();

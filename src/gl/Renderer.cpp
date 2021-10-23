@@ -1,7 +1,9 @@
+#include "demos/Demo.h"
 #include "Renderer.h"
 #include <iostream>
 
-Renderer::Renderer(int width, int height, const char* title)
+Renderer::Renderer(int width, int height, const char* title, Demo& demo)
+    : demo(demo)
 {
     if(!glfwInit())
     {
@@ -40,9 +42,12 @@ void Renderer::startRenderLoop()
             glDrawArrays(GL_TRIANGLES, 0, 3);
         }
 
-        // std::chrono::duration<double> elapsedTime = std::chrono::steady_clock::now() - lastTimestamp;
-
-        // demo.update();
+        //  Calculate elapsed time
+        std::chrono::duration<double> elapsedTime = std::chrono::steady_clock::now() - lastTimestamp;
+        uint64_t delta = std::chrono::duration_cast<std::chrono::milliseconds>(elapsedTime).count();
+        lastTimestamp = std::chrono::steady_clock::now();
+        //  Update
+        demo.update(delta);
 
         glfwPollEvents();
         glfwSwapBuffers(window);

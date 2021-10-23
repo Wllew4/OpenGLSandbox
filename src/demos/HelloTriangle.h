@@ -5,10 +5,8 @@ class HelloTriangle : public Demo
 {
 public:
     HelloTriangle()
-        : Demo(640, 480, "Hello Triangle"), renderer(640, 480, "Hello Triangle") {}
-
-    Renderer renderer;
+        : Demo(640, 480, "Hello Triangle") {}
 
     void run();
-    void update(int deltaTime) {}
+    void update(uint64_t deltaTime) {}
 };

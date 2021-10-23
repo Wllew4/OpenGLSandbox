@@ -9,10 +9,12 @@ GLuint ShaderProgram::get()
     return program;
 }
 
+//  FIX THIS
+//  it works sometimes but i think it's undefined behavior LMAO
 const char* getFile(const char* path)
 {
     std::string file = (std::stringstream() << std::ifstream(path).rdbuf()).str().c_str();
-    // std::cout << file;
+    std::cout << file;
     return file.c_str();
 }
 
