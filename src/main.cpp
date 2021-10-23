@@ -3,7 +3,7 @@
 
 int main()
 {
-    HelloTriangle d = HelloTriangle();
+    Demo& d = HelloTriangle();
     d.run();
     return 0;
 }

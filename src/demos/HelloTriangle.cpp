@@ -1,18 +1,13 @@
 #include "HelloTriangle.h"
 
 #include "gl/glIncludes.h"
-#include "gl/init.h"
 
-#include "gl/ShaderProgram.h"
 #include "gl/Renderer.h"
 #include "gl/VertexArray.h"
-
+#include "gl/ShaderProgram.h"
 
 void HelloTriangle::run()
 {
-    //  Spawn window
-    GLFWwindow* window = init(640, 480, "Hello Triangle");
-
     //  Vertex data
     float triangle[] = 
     {
@@ -31,7 +26,7 @@ void HelloTriangle::run()
     //  Triangle array
     VertexArray vao;
 
-    //  Vertex buffers
+    //  Vertex buffer
     VertexBuffer vboVertices = VertexBuffer(
         triangle,
         sizeof(triangle),
@@ -39,6 +34,7 @@ void HelloTriangle::run()
         3,
         GL_FLOAT);
 
+    //  Color buffer
     VertexBuffer vboColors = VertexBuffer(
         colors,
         sizeof(colors),
@@ -46,17 +42,20 @@ void HelloTriangle::run()
         3,
         GL_FLOAT);
 
+    //  Binding VBOs to VAO
     vao.bindVertexBuffer(vboVertices);
     vao.bindVertexBuffer(vboColors);
 
+    //  Shader construction
     ShaderProgram shaderProgram;
     shaderProgram.vertexShader("shaders/HelloTriangle.vert");
     shaderProgram.fragmentShader("shaders/HelloTriangle.frag");
     shaderProgram.compile();
 
+    //  Applying shader to VAO
     vao.setShader(shaderProgram);
 
-    Renderer r = Renderer(window);
-    r.queueVAO(vao);
-    r.startRenderLoop();
+    //  Render
+    renderer.queueVAO(vao);
+    renderer.startRenderLoop();
 }
