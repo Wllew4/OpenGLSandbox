@@ -11,6 +11,7 @@ obj/
 *.sln
 *.vcxproj
 *.vcxproj.user
+*.vcxproj.filters
 *.csproj
 *.vcproj
 
