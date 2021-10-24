@@ -1,4 +1,4 @@
-#include "HelloTriangle.h"
+#include "IndexedSquare.h"
 
 #include "gl/glIncludes.h"
 #include "gl/shaders.h"
@@ -7,42 +7,40 @@
 #include "gl/VertexArray.h"
 #include "gl/ShaderProgram.h"
 
-void HelloTriangle::run()
+void IndexedSquare::run()
 {
-    //  Vertex data
-    float triangle[] = 
+    float vertices[] = 
     {
-        0.0f,   0.5f,
-        0.5f,   -0.5,
-        -0.5f,  -0.5f,
+        -.5f, -.5f,
+        .5f,  -.5f,
+        .5f,  .5f,
+        -.5f, .5f
     };
 
-    //  Indices
     unsigned int indices[] =
     {
-        0, 1, 2
+        0, 1, 2,
+        2, 3, 0
     };
-    
+
     //  Color data
     float colors[] = {
-        1.0f, 1.0f,  0.0f,
-        0.0f, 1.0f,  1.0f,
-        1.0f, 0.0f,  1.0f
+        1.0f,  1.0f,  0.0f,
+        0.0f,  1.0f,  1.0f,
+        1.0f,  0.0f,  1.0f,
+        1.0f,  1.0f,  0.0f
     };
 
-    //  Triangle array
     VertexArray vao;
 
-    //  Vertex buffer
-    VertexBuffer vboVertices = VertexBuffer
+    VertexBuffer vboVert = VertexBuffer
     (
-        triangle,
-        sizeof(triangle),
+        vertices,
+        sizeof(vertices),
         2,
         GL_FLOAT
     );
 
-    //  Color buffer
     VertexBuffer vboColors = VertexBuffer
     (
         colors,
@@ -51,8 +49,7 @@ void HelloTriangle::run()
         GL_FLOAT
     );
 
-    //  Binding VBOs to VAO
-    vao.bindVertexBuffer(vboVertices);
+    vao.bindVertexBuffer(vboVert);
     vao.setIBO(indices, sizeof(indices));
     vao.bindVertexBuffer(vboColors);
 

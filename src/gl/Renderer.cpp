@@ -40,7 +40,7 @@ void Renderer::startRenderLoop()
         {
             glBindVertexArray(vao.getId());
             glUseProgram(vao.getShader());
-            glDrawArrays(GL_TRIANGLES, 0, 3);
+            glDrawElements(GL_TRIANGLES, vao.getVertexCount(), GL_UNSIGNED_INT, vao.getIBO());
         }
 
         //  Calculate elapsed time

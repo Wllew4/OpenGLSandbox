@@ -23,5 +23,23 @@ void VertexArray::setShader(ShaderProgram& shader)
 void VertexArray::bindVertexBuffer(VertexBuffer& vbo)
 {
     glBindVertexArray(m_id);
-    vbo.bind();
+    vbo.bind(attribIndex);
+    attribIndex++;
+}
+
+
+void VertexArray::setIBO(GLuint ibo[], GLuint count)
+{
+    indicies = ibo;
+    vertexCount = count / sizeof(unsigned int);
+}
+
+GLuint* VertexArray::getIBO()
+{
+    return indicies;
+}
+
+const GLuint& VertexArray::getVertexCount()
+{
+    return vertexCount;
 }

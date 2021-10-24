@@ -1,8 +1,8 @@
-#include "demos/HelloTriangle.h"
+#include "demos/IndexedSquare.h"
 
 int main(int argc, char** argv)
 {
-    Demo& demo = HelloTriangle();
+    Demo& demo = IndexedSquare();
     demo.run();
     return 0;
 }

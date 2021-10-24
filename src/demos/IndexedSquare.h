@@ -1,0 +1,13 @@
+#pragma once
+
+#include "Demo.h"
+
+class IndexedSquare : public Demo
+{
+public:
+    IndexedSquare()
+        : Demo(640, 480, "Hello Square") {}
+
+    void run();
+    void update(uint64_t deltaTime) {}
+};
