@@ -1,3 +1,6 @@
+from build_shaders import build_shaders
+build_shaders()
+
 import os
 import shutil
 

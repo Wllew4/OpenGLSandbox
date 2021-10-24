@@ -1,10 +1,13 @@
 #include "HelloTriangle.h"
 
 #include "gl/glIncludes.h"
+#include "gl/shaders.h"
 
 #include "gl/Renderer.h"
 #include "gl/VertexArray.h"
 #include "gl/ShaderProgram.h"
+
+#include <iostream>
 
 void HelloTriangle::run()
 {
@@ -48,8 +51,8 @@ void HelloTriangle::run()
 
     //  Shader construction
     ShaderProgram shaderProgram;
-    shaderProgram.vertexShader("shaders/HelloTriangle.vert");
-    shaderProgram.fragmentShader("shaders/HelloTriangle.frag");
+    shaderProgram.vertexShader(HelloTriangle_vert);
+    shaderProgram.fragmentShader(HelloTriangle_frag);
     shaderProgram.compile();
 
     //  Applying shader to VAO

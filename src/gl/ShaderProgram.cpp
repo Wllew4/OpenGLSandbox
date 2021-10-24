@@ -1,27 +1,12 @@
 #include "ShaderProgram.h"
 
-#include <fstream>
-#include <sstream>
-#include <iostream>
-
 GLuint ShaderProgram::get()
 {
     return program;
 }
 
-//  FIX THIS
-//  it works sometimes but i think it's undefined behavior LMAO
-const char* getFile(const char* path)
+GLuint ShaderProgram::vertexShader(const char* source)
 {
-    std::string file = (std::stringstream() << std::ifstream(path).rdbuf()).str().c_str();
-    std::cout << file;
-    return file.c_str();
-}
-
-GLuint ShaderProgram::vertexShader(const char* file)
-{
-    const char* source = getFile(file);
-
     GLuint shader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(shader, 1, &source, NULL);
     glCompileShader(shader);
@@ -30,10 +15,8 @@ GLuint ShaderProgram::vertexShader(const char* file)
     return shader;
 }
 
-GLuint ShaderProgram::fragmentShader(const char* file)
+GLuint ShaderProgram::fragmentShader(const char* source)
 {
-    const char* source = getFile(file);
-
     GLuint shader = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(shader, 1, &source, NULL);
     glCompileShader(shader);
