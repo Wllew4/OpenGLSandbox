@@ -1,8 +1,8 @@
-#include "demos/Circle.h"
+#include "demos/Uniforms.h"
 
 int main(int argc, char** argv)
 {
-    Demo& demo = Circle();
+    Demo& demo = Uniforms();
     demo.run();
     return 0;
 }

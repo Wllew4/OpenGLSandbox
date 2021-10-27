@@ -36,19 +36,22 @@ void Renderer::startRenderLoop()
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
-        for(VertexArray vao : queue)
+        //  Calculate elapsed time
+        std::chrono::duration<float> elapsedTime = std::chrono::steady_clock::now() - lastTimestamp;
+        float delta = (float)std::chrono::duration_cast<std::chrono::milliseconds>(elapsedTime).count();
+        lastTimestamp = std::chrono::steady_clock::now();
+        
+        demo.update(delta, queue);
+
+        //  Update
+        for(VertexArray& vao : queue)
         {
             glBindVertexArray(vao.getId());
             glUseProgram(vao.getShader());
             glDrawElements(GL_TRIANGLES, vao.getVertexCount(), GL_UNSIGNED_INT, vao.getIBO());
         }
 
-        //  Calculate elapsed time
-        std::chrono::duration<double> elapsedTime = std::chrono::steady_clock::now() - lastTimestamp;
-        uint64_t delta = std::chrono::duration_cast<std::chrono::milliseconds>(elapsedTime).count();
-        lastTimestamp = std::chrono::steady_clock::now();
-        //  Update
-        demo.update(delta);
+        
 
         glfwPollEvents();
         glfwSwapBuffers(window);

@@ -3,4 +3,4 @@
  *	included in the binary.
  */
 #pragma once
-extern const char* Circle_frag;extern const char* Circle_vert;extern const char* Simple_frag;extern const char* Simple_vert;
+extern const char* Circle_frag;extern const char* Circle_vert;extern const char* Simple_frag;extern const char* Simple_vert;extern const char* Uniforms_frag;

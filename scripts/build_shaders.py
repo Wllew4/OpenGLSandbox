@@ -24,6 +24,6 @@ def build_shaders():
         shaders_cpp.write('=\"')
         shaders_cpp.write(source.replace('\n', '\\n\"\n\"'))
         shaders_cpp.write('\";\n')
-        print(source)
+        # print(source)
         pass
     pass

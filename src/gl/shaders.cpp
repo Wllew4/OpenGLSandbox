@@ -60,3 +60,13 @@ const char* Simple_vert="#version 400\n"
 "    frag_color = color;\n"
 "    gl_Position = vec4(vertex, 0.0, 1.0);\n"
 "}";
+const char* Uniforms_frag="#version 400\n"
+"\n"
+"out vec4 color;\n"
+"\n"
+"uniform float u_time;\n"
+"\n"
+"void main()\n"
+"{\n"
+"    color = vec4(abs(sin(u_time)), 0.2f, 0.3, 1.0f);\n"
+"}";
