@@ -12,5 +12,5 @@ protected:
 
 public:
     virtual void run() = 0;
-    virtual void update(float deltaTime, std::vector<VertexArray>& objects) = 0;
+    virtual void update(float deltaTime) = 0;
 };

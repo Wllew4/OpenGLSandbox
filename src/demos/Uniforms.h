@@ -9,5 +9,5 @@ public:
         : Demo(640, 480, "Uniform color updates") {}
 
     void run();
-    void update(float deltaTime, std::vector<VertexArray>& objects);
+    void update(float deltaTime);
 };

@@ -8,5 +8,5 @@ public:
         : Demo(640, 480, "Hello Triangle") {}
 
     void run();
-    void update(float deltaTime, std::vector<VertexArray>& objects) {}
+    void update(float deltaTime) {}
 };

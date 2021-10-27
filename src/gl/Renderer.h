@@ -19,6 +19,7 @@ private:
 public:
     Renderer(int width, int height, const char* title, Demo& demo);
 
+    std::vector<VertexArray>& getQueue();
     void queueVAO(VertexArray vao);
     void startRenderLoop();
 };

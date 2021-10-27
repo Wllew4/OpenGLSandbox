@@ -7,12 +7,12 @@
 #include "gl/VertexArray.h"
 #include "gl/ShaderProgram.h"
 
-void Uniforms::update(float deltaTime, std::vector<VertexArray>& objects)
+void Uniforms::update(float deltaTime)
 {
     static float elapsedTime;
     elapsedTime += deltaTime / 1000;
-    glUseProgram(objects[0].getShader());
-    int location = glGetUniformLocation(objects[0].getShader(), "u_time");
+    glUseProgram(renderer.getQueue()[0].getShader());
+    int location = glGetUniformLocation(renderer.getQueue()[0].getShader(), "u_time");
     glUniform1f(location, elapsedTime);
 }
 

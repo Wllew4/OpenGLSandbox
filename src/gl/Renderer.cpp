@@ -25,6 +25,11 @@ Renderer::Renderer(int width, int height, const char* title, Demo& demo)
     std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
 }
 
+std::vector<VertexArray>& Renderer::getQueue()
+{
+    return queue;
+}
+
 void Renderer::queueVAO(VertexArray vao)
 {
     queue.emplace_back(vao);
@@ -41,7 +46,7 @@ void Renderer::startRenderLoop()
         float delta = (float)std::chrono::duration_cast<std::chrono::milliseconds>(elapsedTime).count();
         lastTimestamp = std::chrono::steady_clock::now();
         
-        demo.update(delta, queue);
+        demo.update(delta);
 
         //  Update
         for(VertexArray& vao : queue)
