@@ -65,8 +65,5 @@ void Circle::run()
     //  Render
     renderer.queueVAO(vao);
 
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-
     renderer.startRenderLoop();
 }

@@ -1,8 +1,8 @@
-#include "demos/Uniforms.h"
+#include "demos/Batch.h"
 
 int main(int argc, char** argv)
 {
-    Demo& demo = Uniforms();
+    Demo& demo = Batch();
     demo.run();
     return 0;
 }

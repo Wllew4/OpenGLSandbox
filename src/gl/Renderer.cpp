@@ -20,6 +20,9 @@ Renderer::Renderer(int width, int height, const char* title, Demo& demo)
     }
     glfwMakeContextCurrent(window);
     glewInit();
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     
     std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
     std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;

@@ -2,6 +2,27 @@
  *	This makes the program more portable as the shader sources are
  *	included in the binary.
  */
+const char* Batch_frag="#version 400\n"
+"\n"
+"out vec4 color;\n"
+"\n"
+"in vec3 frag_color;\n"
+"\n"
+"void main()\n"
+"{\n"
+"    color = vec4(1.0);\n"
+"}";
+const char* Batch_vert="#version 400\n"
+"\n"
+"in vec3 vertex;\n"
+"\n"
+"out vec3 frag_color;\n"
+"\n"
+"void main()\n"
+"{\n"
+"    frag_color = vertex;\n"
+"    gl_Position = vec4(vertex, 1.0);\n"
+"}";
 const char* Circle_frag="#version 400\n"
 "\n"
 "out vec4 color;\n"

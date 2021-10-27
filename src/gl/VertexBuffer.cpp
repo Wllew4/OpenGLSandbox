@@ -9,7 +9,7 @@ VertexBuffer::VertexBuffer(
 {
     glGenBuffers(1, &m_id);
     glBindBuffer(GL_ARRAY_BUFFER, m_id);
-    glBufferData(GL_ARRAY_BUFFER, length, data, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, length, data, GL_DYNAMIC_DRAW);
 }
 
 void VertexBuffer::bind(GLuint index)

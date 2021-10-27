@@ -71,9 +71,6 @@ void Uniforms::run()
     //  Applying shader to VAO
     vao.setShader(shaderProgram);
 
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
-
     //  Render
     renderer.queueVAO(vao);
     renderer.startRenderLoop();

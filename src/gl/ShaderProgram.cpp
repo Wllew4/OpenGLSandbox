@@ -1,5 +1,11 @@
 #include "ShaderProgram.h"
 
+ShaderProgram::ShaderProgram(const char* vert, const char* frag)
+{
+    vertexShader(vert);
+    fragmentShader(frag);
+}
+
 GLuint ShaderProgram::get()
 {
     return program;
