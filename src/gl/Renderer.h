@@ -1,7 +1,7 @@
 #pragma once
 
 #include "glIncludes.h"
-#include "VertexArray.h"
+#include "Mesh.h"
 #include <vector>
 #include <chrono>
 
@@ -11,7 +11,7 @@ class Demo;
 class Renderer
 {
 private:
-    std::vector<VertexArray> queue;
+    std::vector<Mesh> queue;
     GLFWwindow* window;
     Demo& demo;
     std::chrono::time_point<std::chrono::steady_clock> lastTimestamp = std::chrono::steady_clock::now();
@@ -19,7 +19,7 @@ private:
 public:
     Renderer(int width, int height, const char* title, Demo& demo);
 
-    std::vector<VertexArray>& getQueue();
-    void queueVAO(VertexArray vao);
+    std::vector<Mesh>& getQueue();
+    void queueVAO(Mesh vao);
     void startRenderLoop();
 };

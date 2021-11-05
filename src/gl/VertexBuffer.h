@@ -1,6 +1,7 @@
 #pragma once
 
 #include "glIncludes.h"
+#include <vector>
 
 class VertexBuffer
 {
@@ -9,12 +10,18 @@ private:
     
     GLint m_vecSize;
     GLenum m_type;
+
 public:
     VertexBuffer(
-        void* data,
-        GLsizeiptr length,
         GLint vecSize,
         GLenum type);
 
+    GLuint getID()
+    {
+        return m_id;
+    }
+
     void bind(GLuint index);
+    
+    void populate(std::vector<float> data);
 };

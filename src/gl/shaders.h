@@ -3,4 +3,24 @@
  *	included in the binary.
  */
 #pragma once
-extern const char* Batch_frag;extern const char* Batch_vert;extern const char* Circle_frag;extern const char* Circle_vert;extern const char* Simple_frag;extern const char* Simple_vert;extern const char* Uniforms_frag;
+constexpr char* Standard_frag="#version 400\n"
+"\n"
+"out vec4 color;\n"
+"\n"
+"in vec3 frag_color;\n"
+"\n"
+"void main()\n"
+"{\n"
+"    color = vec4(frag_color, 1.0);\n"
+"}";
+constexpr char* Standard_vert="#version 400\n"
+"\n"
+"layout(location = 0) in vec2 a_vertex;\n"
+"\n"
+"out vec3 frag_color;\n"
+"\n"
+"void main()\n"
+"{\n"
+"    frag_color = vec3(0.25, 0.25, 1.0);\n"
+"    gl_Position = vec4(a_vertex, 0.0, 1.0);\n"
+"}";

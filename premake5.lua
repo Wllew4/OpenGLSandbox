@@ -21,7 +21,8 @@ project "Sandbox"
     {
         "src",
         "lib/glfw/include",
-        "lib/glew/include"
+        "lib/glew/include",
+        "lib/glm/glm"
     }
     libdirs
     {
