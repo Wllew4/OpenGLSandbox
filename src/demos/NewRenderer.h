@@ -2,7 +2,7 @@
 
 #include "Demo.h"
 
-#include "gl/Mesh.h"
+#include "gl/Sprite.h"
 
 class NewRenderer : public Demo
 {

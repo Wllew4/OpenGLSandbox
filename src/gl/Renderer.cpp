@@ -28,12 +28,12 @@ Renderer::Renderer(int width, int height, const char* title, Demo& demo)
     std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
 }
 
-std::vector<Mesh>& Renderer::getQueue()
+std::vector<Sprite*>& Renderer::getQueue()
 {
     return queue;
 }
 
-void Renderer::queueVAO(Mesh vao)
+void Renderer::queueVAO(Sprite* vao)
 {
     queue.emplace_back(vao);
 }
@@ -53,12 +53,12 @@ void Renderer::startRenderLoop()
         demo.update(delta);
 
         //  Update
-        for(Mesh& vao : queue)
+        for(Sprite* vao : queue)
         {
-            glBindVertexArray(vao.getVAO());
-            glBindBuffer(GL_ARRAY_BUFFER, vao.getVBO());
-            glUseProgram(vao.getMaterial().getShader());
-            glDrawElements(GL_TRIANGLES, vao.getVertexCount() * 2, GL_UNSIGNED_INT, vao.getIBO());
+            glBindVertexArray(vao->getVAO());
+            glBindBuffer(GL_ARRAY_BUFFER, vao->getVBO());
+            glUseProgram(vao->getMaterial().getShader());
+            glDrawElements(GL_TRIANGLES, vao->getVertexCount(), GL_UNSIGNED_INT, vao->getIndices());
         }
 
         

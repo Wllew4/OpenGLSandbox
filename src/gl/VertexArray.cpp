@@ -23,7 +23,7 @@ void VertexArray::setShader(ShaderProgram& shader)
 void VertexArray::bindVertexBuffer(VertexBuffer& vbo)
 {
     glBindVertexArray(m_id);
-    vbo.bind(attribIndex);
+    // vbo.bind(attribIndex);
     attribIndex++;
 }
 

@@ -1,27 +1,21 @@
 #pragma once
 
 #include "glIncludes.h"
-#include <vector>
 
 class VertexBuffer
 {
 private:
     GLuint m_id;
-    
-    GLint m_vecSize;
-    GLenum m_type;
+    size_t m_bufferSize;
 
 public:
-    VertexBuffer(
-        GLint vecSize,
-        GLenum type);
+    VertexBuffer(const void* data, size_t size);
+    ~VertexBuffer();
+    const GLuint get() const;
+    const size_t getSize() const;
 
-    GLuint getID()
-    {
-        return m_id;
-    }
-
-    void bind(GLuint index);
+    void bind() const;
+    void unbind() const;
     
-    void populate(std::vector<float> data);
+    void populate(const void* data, size_t size, size_t offset) const;
 };
