@@ -12,20 +12,19 @@ void NewRenderer::run()
         glm::vec2(0.0,  0.5)
     };
 
-    GLuint* indices = new GLuint[3] {
+    std::vector<GLuint> indices =
+    {
         0, 1, 2
     };
 
-    ShaderProgram shader = ShaderProgram(Standard_vert, Standard_frag);
+    ShaderProgram standardShader = ShaderProgram(Standard_vert, Standard_frag);
 
-    Material mat = Material(shader);
+    Material mat = Material(standardShader);
 
-    Mesh pleasework = Mesh(vertices.data(), vertices.size() * 2, indices, mat);
-
-    glBindAttribLocation(shader.get(), 0, "a_vertex");
+    Sprite pleasework = Sprite(vertices, indices, mat);
+    glBindAttribLocation(standardShader.get(), 0, "a_vertex");
 
     renderer.queueVAO(pleasework);
-
     renderer.startRenderLoop();
 }
 

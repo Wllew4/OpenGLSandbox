@@ -9,7 +9,7 @@ class Material
 {
 private:
     ShaderProgram& shader;
-    VertexBuffer color = VertexBuffer(3, GL_FLOAT);
+    // VertexBuffer color = VertexBuffer(3, GL_FLOAT);
 
 public:
     Material(ShaderProgram& _shader)
@@ -18,12 +18,12 @@ public:
 
     }
 
-    GLuint getColorBuffer()
-    {
-        return color.getID();
-    }
+    // GLuint getColorBuffer()
+    // {
+    //     return color.getID();
+    // }
 
-    const GLuint& getShader()
+    const GLuint getShader()
     {
         return shader.get();
     }

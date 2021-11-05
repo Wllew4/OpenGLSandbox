@@ -4,6 +4,7 @@ ShaderProgram::ShaderProgram(const char* vert, const char* frag)
 {
     vertexShader(vert);
     fragmentShader(frag);
+    compile();
 }
 
 GLuint ShaderProgram::get()
@@ -33,7 +34,5 @@ GLuint ShaderProgram::fragmentShader(const char* source)
 
 void ShaderProgram::compile()
 {
-    glBindAttribLocation(program, VERTEX_BUFFER_INDEX, VERTEX_BUFFER_NAME);
-    glBindAttribLocation(program, COLOR_BUFFER_INDEX, COLOR_BUFFER_NAME);
     glLinkProgram(program);
 }

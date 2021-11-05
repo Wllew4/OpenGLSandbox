@@ -1,22 +1,39 @@
 #include "VertexBuffer.h"
 
-VertexBuffer::VertexBuffer(
-    GLint vecSize,
-    GLenum type)
-    : m_vecSize(vecSize), m_type(type)
+VertexBuffer::VertexBuffer(const void* data, size_t size)
+    : m_bufferSize(size)
 {
     glGenBuffers(1, &m_id);
     glBindBuffer(GL_ARRAY_BUFFER, m_id);
+    glBufferData(GL_ARRAY_BUFFER, size, data, GL_DYNAMIC_DRAW);
 }
 
-void VertexBuffer::bind(GLuint index)
+VertexBuffer::~VertexBuffer()
+{
+    glDeleteBuffers(1, &m_id);
+}
+
+const GLuint VertexBuffer::get() const
+{
+    return m_id;
+}
+
+const size_t VertexBuffer::getSize() const
+{
+    return m_bufferSize;
+}
+
+void VertexBuffer::bind() const
 {
     glBindBuffer(GL_ARRAY_BUFFER, m_id);
-    glVertexAttribPointer(index, m_vecSize, m_type, GL_FALSE, 0, NULL);
-    glEnableVertexAttribArray(index);
 }
 
-void VertexBuffer::populate(std::vector<float> data)
+void VertexBuffer::unbind() const
 {
-    glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), data.data(), GL_DYNAMIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+}
+
+void VertexBuffer::populate(const void* data, size_t size, size_t offset) const
+{
+    glBufferSubData(GL_ARRAY_BUFFER, offset, size, data);
 }
