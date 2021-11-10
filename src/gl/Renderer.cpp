@@ -28,20 +28,27 @@ Renderer::Renderer(int width, int height, const char* title, Demo& demo)
     std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
 }
 
-std::vector<Sprite*>& Renderer::getQueue()
+void Renderer::queueSprite(Sprite* sprite)
 {
-    return queue;
-}
+    queue.emplace_back(
+        sprite->getVertices().data(), sprite->getVertices().size() * sizeof(glm::vec2),
+        sprite->getMaterial(),
+        sprite->getVertexCount(),
+        sprite->getIndices()
+    );
 
-void Renderer::queueVAO(Sprite* vao)
-{
-    queue.emplace_back(vao);
+    const size_t i = queue.size() - 1;
+    queue[i].vao.bind();
+    queue[i].vbo.bind();
+    queue[i].vao.setAttributeLayout(s_SpriteAttributeLayout);
+    glBindAttribLocation(queue[i].material.getShader(), 0, "a_vertex");
 }
 
 void Renderer::startRenderLoop()
 {
     while(!glfwWindowShouldClose(window))
     {
+        //  Clear frame buffer
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
         //  Calculate elapsed time
@@ -51,13 +58,13 @@ void Renderer::startRenderLoop()
         
         demo.update(delta);
 
-        //  Update
-        for(Sprite* vao : queue)
+        //  Draw
+        for(Batch& batch : queue)
         {
-            glBindVertexArray(vao->getVAO());
-            glBindBuffer(GL_ARRAY_BUFFER, vao->getVBO());
-            glUseProgram(vao->getMaterial().getShader());
-            glDrawElements(GL_TRIANGLES, vao->getVertexCount(), GL_UNSIGNED_INT, vao->getIndices());
+            batch.vao.bind();
+            batch.vbo.bind();
+            glUseProgram(batch.material.getShader());
+            glDrawElements(GL_TRIANGLES, batch.vertexCount, GL_UNSIGNED_INT, batch.indices);
         }
 
         glfwPollEvents();

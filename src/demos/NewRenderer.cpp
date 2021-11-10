@@ -7,9 +7,9 @@ void NewRenderer::run()
 {
     std::vector<glm::vec2> vertices =
     {
-        glm::vec2(0.5,  0.0),
-        glm::vec2(-0.5, 0.0),
-        glm::vec2(0.0,  0.5)
+        glm::vec2(0.5,  -0.5),
+        glm::vec2(-0.5, -0.5),
+        glm::vec2(0.0,   0.5)
     };
 
     std::vector<GLuint> indices =
@@ -21,11 +21,9 @@ void NewRenderer::run()
 
     Material mat = Material(standardShader);
 
-    Sprite pleasework (vertices, indices, mat);
+    Sprite prettyTriangle (vertices, indices, mat);
 
-    glBindAttribLocation(standardShader.get(), 0, "a_vertex");
-
-    renderer.queueVAO(&pleasework);
+    renderer.queueSprite(&prettyTriangle);
 
     renderer.startRenderLoop();
 }

@@ -5,41 +5,32 @@ VertexArray::VertexArray()
     glGenVertexArrays(1, &m_id);
 }
 
-const GLuint& VertexArray::getId()
+VertexArray::~VertexArray()
+{
+    glDeleteVertexArrays(1, &m_id);
+}
+
+const GLuint VertexArray::get()
 {
     return m_id;
 }
 
-const GLuint& VertexArray::getShader()
-{
-    return m_shader;
-}
-
-void VertexArray::setShader(ShaderProgram& shader)
-{
-    m_shader = shader.get();
-}
-
-void VertexArray::bindVertexBuffer(VertexBuffer& vbo)
+void VertexArray::bind() const
 {
     glBindVertexArray(m_id);
-    // vbo.bind(attribIndex);
-    attribIndex++;
 }
 
-
-void VertexArray::setIBO(GLuint ibo[], GLuint count)
+void VertexArray::unbind() const
 {
-    indicies = ibo;
-    vertexCount = count / sizeof(unsigned int);
+    glBindVertexArray(0);
 }
 
-GLuint* VertexArray::getIBO()
+void VertexArray::setAttributeLayout(std::vector<Attribute> attributeLayout) const
 {
-    return indicies;
-}
-
-const GLuint& VertexArray::getVertexCount()
-{
-    return vertexCount;
+    bind();
+    for (size_t i = 0; i < attributeLayout.size(); i++)
+    {
+        glEnableVertexAttribArray(i);
+        glVertexAttribPointer(i, attributeLayout[i].count, attributeLayout[i].type, GL_FALSE, 0, 0);
+    }
 }

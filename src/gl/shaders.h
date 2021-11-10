@@ -21,6 +21,6 @@ constexpr char* Standard_vert="#version 400\n"
 "\n"
 "void main()\n"
 "{\n"
-"    frag_color = vec3(0.25, 0.25, 1.0);\n"
+"    frag_color = vec3(1.0, gl_VertexID/2.0, 1.0);\n"
 "    gl_Position = vec4(a_vertex, 0.0, 1.0);\n"
 "}";

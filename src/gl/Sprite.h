@@ -2,28 +2,34 @@
 
 #include "glIncludes.h"
 #include "VertexBuffer.h"
+#include "VertexArray.h"
 #include "Material.h"
 #include <vec2.hpp>
 #include <iostream>
+
+static std::vector<Attribute> s_SpriteAttributeLayout =
+{
+    { 2, GL_FLOAT, "a_vertex" }
+};
 
 class Sprite
 {
 private:
     std::vector<glm::vec2> vertices;
     std::vector<GLuint> indices;
-    VertexBuffer vbo = VertexBuffer(vertices.data(), vertices.size() * sizeof(glm::vec2));
-    GLuint vao;
     Material& material;
 
 public:
     Sprite(const std::vector<glm::vec2>& vertices, const std::vector<GLuint>& indices, Material& mat)
         : vertices(vertices), indices(indices), material(mat)
     {
-        glGenVertexArrays(1, &vao);
-        glBindVertexArray(vao);
+        // vao.setAttributeLayout(s_SpriteAttributeLayout);
+        // glBindAttribLocation(material.getShader(), 0, "a_vertex");
+    }
 
-        glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+    const std::vector<glm::vec2> getVertices()
+    {
+        return vertices;
     }
 
     const size_t getVertexCount()
@@ -36,18 +42,18 @@ public:
         return indices.data();
     }
 
-    Material getMaterial()
+    Material& getMaterial()
     {
         return material;
     }
 
-    const GLuint getVAO()
-    {
-        return vao;
-    }
+    // const GLuint getVAO()
+    // {
+    //     return vao.get();
+    // }
 
-    const GLuint getVBO()
-    {
-        return vbo.get();
-    }
+    // const GLuint getVBO()
+    // {
+    //     return vbo.get();
+    // }
 };

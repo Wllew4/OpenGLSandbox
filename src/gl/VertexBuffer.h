@@ -2,6 +2,8 @@
 
 #include "glIncludes.h"
 
+#include <iostream>
+
 class VertexBuffer
 {
 private:
@@ -11,6 +13,7 @@ private:
 public:
     VertexBuffer(const void* data, size_t size);
     ~VertexBuffer();
+
     const GLuint get() const;
     const size_t getSize() const;
 

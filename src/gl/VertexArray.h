@@ -3,24 +3,21 @@
 #include "glIncludes.h"
 #include "VertexBuffer.h"
 #include "ShaderProgram.h"
+#include <vector>
 
 class VertexArray
 {
 private:
     GLuint m_id = 0;
-    GLuint m_shader = 0;
-    GLuint attribIndex = 0;
-    GLuint* indicies;
-    GLuint vertexCount;
 
 public:
     VertexArray();
+    ~VertexArray();
+    const GLuint get();
 
-    const GLuint& getId();
-    const GLuint& getShader();
-    void setShader(ShaderProgram& shader);
-    void setIBO(GLuint ibo[], GLuint count);
-    GLuint* getIBO();
-    const GLuint& getVertexCount();
-    void bindVertexBuffer(VertexBuffer& vbo);
+    void bind() const;
+
+    void unbind() const;
+
+    void setAttributeLayout(std::vector<Attribute> attributeLayout) const;
 };
