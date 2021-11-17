@@ -2,6 +2,9 @@
 
 #include "glIncludes.h"
 #include "Sprite.h"
+#include "VertexBuffer.h"
+#include "VertexArray.h"
+#include "IndexBuffer.h"
 #include <vector>
 #include <chrono>
 
@@ -12,16 +15,18 @@ struct Batch
 {
     VertexArray vao;
     VertexBuffer vbo;
+    IndexBuffer ibo;
     Material& material;
     size_t vertexCount;
     const GLuint* indices;
     
     Batch(
         const void* data, size_t size,
+        const void* i_data, size_t i_size,
         Material& material,
         size_t vertexCount,
         const GLuint* indices)
-        : vao(), vbo(data, size), material(material), vertexCount(vertexCount), indices(indices) {}
+        : vao(), vbo(data, size), ibo(i_data, i_size), material(material), vertexCount(vertexCount), indices(indices) {}
 };
 
 class Renderer

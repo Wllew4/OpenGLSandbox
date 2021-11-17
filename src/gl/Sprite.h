@@ -1,8 +1,6 @@
 #pragma once
 
 #include "glIncludes.h"
-#include "VertexBuffer.h"
-#include "VertexArray.h"
 #include "Material.h"
 #include <vec2.hpp>
 #include <iostream>
@@ -37,9 +35,9 @@ public:
         return vertices.size() * 2;
     }
 
-    const GLuint* getIndices()
+    const std::vector<GLuint> getIndices()
     {
-        return indices.data();
+        return indices;
     }
 
     Material& getMaterial()

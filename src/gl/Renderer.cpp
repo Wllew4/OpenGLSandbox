@@ -32,6 +32,7 @@ void Renderer::queueSprite(Sprite* sprite)
 {
     queue.emplace_back(
         sprite->getVertices().data(), sprite->getVertices().size() * sizeof(glm::vec2),
+        sprite->getIndices().data(), sprite->getIndices().size() * sizeof(GLuint),
         sprite->getMaterial(),
         sprite->getVertexCount(),
         sprite->getIndices()
@@ -63,8 +64,9 @@ void Renderer::startRenderLoop()
         {
             batch.vao.bind();
             batch.vbo.bind();
+            batch.ibo.bind();
             glUseProgram(batch.material.getShader());
-            glDrawElements(GL_TRIANGLES, batch.vertexCount, GL_UNSIGNED_INT, batch.indices);
+            glDrawElements(GL_TRIANGLES, batch.vertexCount, GL_UNSIGNED_INT, nullptr);
         }
 
         glfwPollEvents();
