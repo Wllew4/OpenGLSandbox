@@ -4,6 +4,7 @@ pcall(require, "vscode")
 
 workspace "OpenGLSandbox"
     configurations { "Release" }
+    platforms { "Win32" }
 
 project "Sandbox"
     --Compiler/Linker Options
@@ -32,21 +33,27 @@ project "Sandbox"
         "shaders",
         "lib/glfw/include",
         "lib/glew/include",
-        "lib/glm/glm"
+        "lib/glm/glm",
+        "lib/lua-5.4.2/include"
     }
     libdirs
     {
         "lib/glfw/lib-vc2019",
-        "lib/glew/Win32"
+        "lib/glew/Win32",
+        "lib/lua-5.4.2"
     }
     links
     {
         "glfw3",
         "glew32s",
-        "opengl32"
+        "opengl32",
+        "liblua54"
     }
 
     --Configurations
     filter "configurations:Release"
-        defines { "RELEASE" }
+        defines
+        {
+            "RELEASE"
+        }
         symbols "Off"
