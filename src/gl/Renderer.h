@@ -18,15 +18,13 @@ struct Batch
     IndexBuffer ibo;
     Material& material;
     size_t vertexCount;
-    const GLuint* indices;
     
     Batch(
         const void* data, size_t size,
         const void* i_data, size_t i_size,
         Material& material,
-        size_t vertexCount,
-        const GLuint* indices)
-        : vao(), vbo(data, size), ibo(i_data, i_size), material(material), vertexCount(vertexCount), indices(indices) {}
+        size_t vertexCount)
+        : vao(), vbo(data, size), ibo(i_data, i_size), material(material), vertexCount(vertexCount) {}
 };
 
 class Renderer

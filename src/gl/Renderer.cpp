@@ -34,8 +34,7 @@ void Renderer::queueSprite(Sprite* sprite)
         sprite->getVertices().data(), sprite->getVertices().size() * sizeof(glm::vec2),
         sprite->getIndices().data(), sprite->getIndices().size() * sizeof(GLuint),
         sprite->getMaterial(),
-        sprite->getVertexCount(),
-        sprite->getIndices()
+        sprite->getVertexCount()
     );
 
     const size_t i = queue.size() - 1;

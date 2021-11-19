@@ -1,3 +1,7 @@
+-- check for vscode premake script and import if available
+pcall(require, "vscode")
+
+
 workspace "OpenGLSandbox"
     configurations { "Release" }
 
@@ -6,7 +10,12 @@ project "Sandbox"
     kind "ConsoleApp"
     language "C++"
     cppdialect "C++17"
+
     linkoptions { '/NODEFAULTLIB:"LIBCMT"' }
+    prebuildcommands
+    {
+        "python scripts/build_shaders.py"
+    }
     
     --Files/Directories
     targetdir "bin"

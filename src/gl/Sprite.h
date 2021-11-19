@@ -19,11 +19,7 @@ private:
 
 public:
     Sprite(const std::vector<glm::vec2>& vertices, const std::vector<GLuint>& indices, Material& mat)
-        : vertices(vertices), indices(indices), material(mat)
-    {
-        // vao.setAttributeLayout(s_SpriteAttributeLayout);
-        // glBindAttribLocation(material.getShader(), 0, "a_vertex");
-    }
+        : vertices(vertices), indices(indices), material(mat) {}
 
     const std::vector<glm::vec2> getVertices()
     {
@@ -44,14 +40,4 @@ public:
     {
         return material;
     }
-
-    // const GLuint getVAO()
-    // {
-    //     return vao.get();
-    // }
-
-    // const GLuint getVBO()
-    // {
-    //     return vbo.get();
-    // }
 };

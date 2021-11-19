@@ -17,14 +17,17 @@ private:
     GLuint program = glCreateProgram();
     std::vector<Attribute> attributeLayout;
 
+    GLuint vertexShader(const char* file);
+    GLuint fragmentShader(const char* file);
+
 public:
     ShaderProgram() {}
     ShaderProgram(const char* vert, const char* frag);
     GLuint get();
-
-    GLuint vertexShader(const char* file);
-    GLuint fragmentShader(const char* file);
     void compile();
 
-
+    void setAttributeLayout(std::vector<Attribute> attribs)
+    {
+        attributeLayout = attribs;
+    }
 };
