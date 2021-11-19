@@ -12,9 +12,9 @@ project "Sandbox"
     cppdialect "C++17"
 
     linkoptions { '/NODEFAULTLIB:"LIBCMT"' }
-    prebuildcommands
+    postbuildcommands
     {
-        "python scripts/build_shaders.py"
+        "python scripts/copy_shaders.py"
     }
     
     --Files/Directories
@@ -29,6 +29,7 @@ project "Sandbox"
     includedirs
     {
         "src",
+        "shaders",
         "lib/glfw/include",
         "lib/glew/include",
         "lib/glm/glm"

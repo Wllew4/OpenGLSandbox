@@ -1,7 +1,16 @@
 #include "NewRenderer.h"
 
 #include <vec2.hpp>
-#include "gl/shaders.h"
+#include <fstream>
+#include <iostream>
+
+std::string loadFile(std::string path)
+{
+    return std::string(std::istreambuf_iterator<char>(std::ifstream(path.c_str())), std::istreambuf_iterator<char>());
+}
+
+std::string Standard_vert = loadFile("shaders/Standard.vert");
+std::string Standard_frag = loadFile("shaders/Standard.frag");
 
 void NewRenderer::run()
 {
@@ -17,7 +26,7 @@ void NewRenderer::run()
         0, 1, 2
     };
 
-    ShaderProgram standardShader = ShaderProgram(Standard_vert, Standard_frag);
+    ShaderProgram standardShader = ShaderProgram(Standard_vert.c_str(), Standard_frag.c_str());
 
     Material mat = Material(standardShader);
 
