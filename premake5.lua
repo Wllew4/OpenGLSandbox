@@ -15,7 +15,7 @@ project "Sandbox"
     linkoptions { '/NODEFAULTLIB:"LIBCMT"' }
     postbuildcommands
     {
-        "python scripts/copy_shaders.py"
+        "python scripts/copy_resources.py"
     }
     
     --Files/Directories
@@ -34,13 +34,13 @@ project "Sandbox"
         "lib/glfw/include",
         "lib/glew/include",
         "lib/glm/glm",
-        "lib/lua-5.4.2/include"
+        "lib/lua-5.4.2_lib32/include"
     }
     libdirs
     {
         "lib/glfw/lib-vc2019",
         "lib/glew/Win32",
-        "lib/lua-5.4.2"
+        "lib/lua-5.4.2_lib32"
     }
     links
     {

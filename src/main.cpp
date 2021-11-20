@@ -1,8 +1,8 @@
-#include "demos/NewRenderer.h"
+#include "Sandboxing/Sandbox.h"
 
 int main(int argc, char** argv)
 {
-    Demo& demo = NewRenderer();
-    demo.run();
+    Sandbox s = Sandbox();
+    s.run("sandbox/sandbox.lua");
     return 0;
 }

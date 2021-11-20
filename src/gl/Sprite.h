@@ -15,11 +15,10 @@ class Sprite
 private:
     std::vector<glm::vec2> vertices;
     std::vector<GLuint> indices;
-    Material& material;
 
 public:
-    Sprite(const std::vector<glm::vec2>& vertices, const std::vector<GLuint>& indices, Material& mat)
-        : vertices(vertices), indices(indices), material(mat) {}
+    Sprite(const std::vector<glm::vec2>& vertices, const std::vector<GLuint>& indices)
+        : vertices(vertices), indices(indices) {}
 
     const std::vector<glm::vec2> getVertices()
     {
@@ -34,10 +33,5 @@ public:
     const std::vector<GLuint> getIndices()
     {
         return indices;
-    }
-
-    Material& getMaterial()
-    {
-        return material;
     }
 };

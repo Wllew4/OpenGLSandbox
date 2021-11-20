@@ -9,7 +9,7 @@
 #include <chrono>
 
 //  forward declaration
-class Demo;
+class Sandbox;
 
 struct Batch
 {
@@ -32,12 +32,12 @@ class Renderer
 private:
     std::vector<Batch> queue;
     GLFWwindow* window;
-    Demo& demo;
+    Sandbox& demo;
     std::chrono::time_point<std::chrono::steady_clock> lastTimestamp = std::chrono::steady_clock::now();
     
 public:
-    Renderer(int width, int height, const char* title, Demo& demo);
+    Renderer(int width, int height, const char* title, Sandbox& demo);
 
-    void queueSprite(Sprite* sprite);
+    void queueSprite(Sprite* sprite, Material& mat);
     void startRenderLoop();
 };

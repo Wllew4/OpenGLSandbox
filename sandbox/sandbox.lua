@@ -1,20 +1,23 @@
--- print("hello world!")
--- print(getHello(420))
+function GetFile(path)
+    local f = assert(io.open(path, "rb"))
+    local content = f:read("*all")
+    f:close()
+    return content
+end
 
-local array = { 1, 2, 3 }
-getHello(array)
+local sprite =
+{
+    vertices =
+    {
+        0.5,  -0.5,
+        -0.5, -0.5,
+        0.0,  0.5
+    },
 
--- local sprite = 
--- {
---     vertices =
---     {
---         0.5,  -0.5,
---         -0.5, -0.5,
---         0.0,  0.5
---     },
+    indices =
+    {
+        0, 1, 2
+    }
+}
 
---     indices = 
---     {
---         0, 1, 2
---     }
--- }
+getHello(sprite)

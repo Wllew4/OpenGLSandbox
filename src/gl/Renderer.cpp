@@ -1,8 +1,7 @@
-#include "demos/Demo.h"
 #include "Renderer.h"
 #include <iostream>
 
-Renderer::Renderer(int width, int height, const char* title, Demo& demo)
+Renderer::Renderer(int width, int height, const char* title, Sandbox& demo)
     : demo(demo)
 {
     if(!glfwInit())
@@ -28,12 +27,12 @@ Renderer::Renderer(int width, int height, const char* title, Demo& demo)
     std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
 }
 
-void Renderer::queueSprite(Sprite* sprite)
+void Renderer::queueSprite(Sprite* sprite, Material& mat)
 {
     queue.emplace_back(
         sprite->getVertices().data(), sprite->getVertices().size() * sizeof(glm::vec2),
         sprite->getIndices().data(), sprite->getIndices().size() * sizeof(GLuint),
-        sprite->getMaterial(),
+        mat,
         sprite->getVertexCount()
     );
 
@@ -56,7 +55,7 @@ void Renderer::startRenderLoop()
         float delta = (float)std::chrono::duration_cast<std::chrono::milliseconds>(elapsedTime).count();
         lastTimestamp = std::chrono::steady_clock::now();
         
-        demo.update(delta);
+        // demo.update(delta);
 
         //  Draw
         for(Batch& batch : queue)
