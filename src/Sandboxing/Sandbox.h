@@ -2,12 +2,9 @@
 
 #include <string>
 
-#include <gl/glIncludes.h>
-#include <vec2.hpp>
 #include "gl/Sprite.h"
 #include "gl/Renderer.h"
 #include <fstream>
-#include <iostream>
 
 #include "lua.hpp"
 
