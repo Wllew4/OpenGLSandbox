@@ -9,7 +9,7 @@
 #include "util.h"
 
 #include "LuaHandler.h"
-ShaderProgram standardShader;
+// ShaderProgram standardShader;
 
 class Sandbox
 {
