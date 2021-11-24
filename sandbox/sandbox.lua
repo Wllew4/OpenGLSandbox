@@ -1,9 +1,4 @@
-function GetFile(path)
-    local f = assert(io.open(path, "rb"))
-    local content = f:read("*all")
-    f:close()
-    return content
-end
+dofile("./lua/getfile.lua")
 
 local sprite =
 {
@@ -20,4 +15,12 @@ local sprite =
     }
 }
 
-getHello(sprite)
+loadMesh2D(sprite)
+
+local shader =
+{
+    getfile("shaders/Standard.vert"),
+    getfile("shaders/Standard.frag")
+}
+
+loadShader(shader)
