@@ -10,14 +10,14 @@ static std::vector<Attribute> s_SpriteAttributeLayout =
     { 2, GL_FLOAT, "a_vertex" }
 };
 
-class Sprite
+class Mesh2D
 {
 private:
     std::vector<glm::vec2> vertices;
     std::vector<GLuint> indices;
 
 public:
-    Sprite(const std::vector<glm::vec2>& vertices, const std::vector<GLuint>& indices)
+    Mesh2D(const std::vector<glm::vec2>& vertices, const std::vector<GLuint>& indices)
         : vertices(vertices), indices(indices) {}
 
     const std::vector<glm::vec2> getVertices()

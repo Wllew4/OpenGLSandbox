@@ -28,7 +28,7 @@ void VertexArray::unbind() const
 void VertexArray::setAttributeLayout(std::vector<Attribute> attributeLayout) const
 {
     bind();
-    for (size_t i = 0; i < attributeLayout.size(); i++)
+    for (GLuint i = 0; i < attributeLayout.size(); i++)
     {
         glEnableVertexAttribArray(i);
         glVertexAttribPointer(i, attributeLayout[i].count, attributeLayout[i].type, GL_FALSE, 0, 0);

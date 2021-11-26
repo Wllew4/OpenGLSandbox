@@ -1,7 +1,7 @@
 #pragma once
 
 #include "glIncludes.h"
-#include "Sprite.h"
+#include "Mesh2D.h"
 #include "VertexBuffer.h"
 #include "VertexArray.h"
 #include "IndexBuffer.h"
@@ -17,13 +17,13 @@ struct Batch
     VertexBuffer vbo;
     IndexBuffer ibo;
     Material& material;
-    size_t vertexCount;
+    GLsizei vertexCount;
     
     Batch(
         const void* data, size_t size,
         const void* i_data, size_t i_size,
         Material& material,
-        size_t vertexCount)
+        GLsizei vertexCount)
         : vao(), vbo(data, size), ibo(i_data, i_size), material(material), vertexCount(vertexCount) {}
 };
 
@@ -38,6 +38,6 @@ private:
 public:
     Renderer(int width, int height, const char* title, Sandbox& demo);
 
-    void queueSprite(Sprite* sprite, Material& mat);
+    void queueSprite(Mesh2D* sprite, Material& mat);
     void startRenderLoop();
 };

@@ -1,14 +1,14 @@
 #pragma once
 
+/**
+ *  NOT CURRENTLY IN USE 
+*/
 #include <iostream>
 #include <vector>
 #include "vec2.hpp"
 #include "gl/glIncludes.h"
 #include "lua.hpp"
 #include "gl/ShaderProgram.h"
-
-std::vector<GLuint> indices = std::vector<GLuint>(3);
-std::vector<glm::vec2> vertices = std::vector<glm::vec2>();
 
 class LuaHander
 {
@@ -31,7 +31,7 @@ private:
             lua_pushinteger(L, i);
             lua_gettable(L, -2);
             // std::cout << i << ": " << lua_tointeger(L, -1) << std::endl;
-            indices.emplace_back((GLuint)lua_tointeger(L, -1));
+            //indices.emplace_back((GLuint)lua_tointeger(L, -1));
             lua_pop(L, 1);
         }
         lua_pop(L, 1);
@@ -60,7 +60,7 @@ private:
             // std::cout << i+1 << ": " << lua_tonumber(L, -1) << std::endl;
             vec.y = (float)lua_tonumber(L, -1);
             lua_pop(L, 1);
-            vertices.emplace_back(vec);
+            //vertices.emplace_back(vec);
         }
         lua_pop(L, 1);
         return 1;

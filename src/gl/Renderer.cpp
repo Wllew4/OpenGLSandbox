@@ -27,13 +27,13 @@ Renderer::Renderer(int width, int height, const char* title, Sandbox& demo)
     std::cout << "Renderer: " << glGetString(GL_RENDERER) << std::endl;
 }
 
-void Renderer::queueSprite(Sprite* sprite, Material& mat)
+void Renderer::queueSprite(Mesh2D* sprite, Material& mat)
 {
     queue.emplace_back(
         sprite->getVertices().data(), sprite->getVertices().size() * sizeof(glm::vec2),
         sprite->getIndices().data(), sprite->getIndices().size() * sizeof(GLuint),
         mat,
-        sprite->getVertexCount()
+        (GLsizei)sprite->getVertexCount()
     );
 
     const size_t i = queue.size() - 1;

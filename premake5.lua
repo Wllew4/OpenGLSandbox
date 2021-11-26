@@ -3,7 +3,7 @@ pcall(require, "vscode")
 
 
 workspace "OpenGLSandbox"
-    configurations { "Debug", "Release" }
+    configurations { "Release" }
     platforms { "Win64" }
 
 project "Sandbox"
@@ -12,7 +12,10 @@ project "Sandbox"
     language "C++"
     cppdialect "C++17"
 
-    linkoptions { '/NODEFAULTLIB:"LIBCMT"' }
+    linkoptions
+    {
+        '/NODEFAULTLIB:"LIBCMT"'
+    }
     prebuildcommands
     {
         "python scripts/copy_resources.py"
@@ -48,13 +51,6 @@ project "Sandbox"
     }
 
     --Configurations
-    filter "configurations:Debug"
-        defines
-        {
-            "DEBUG"
-        }
-        symbols "On"
-
     filter "configurations:Release"
         defines
         {
