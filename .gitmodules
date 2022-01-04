@@ -8,3 +8,4 @@
 	path = lib/glew
 	url = https://github.com/Perlmint/glew-cmake
 	branch = glew-cmake-release
+    ignore = dirty

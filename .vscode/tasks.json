@@ -1,0 +1,30 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "msbuild",
+            "args": [
+                "OpenGLSandbox.sln",
+                "/property:Configuration=Release"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "bin/sandbox.exe"
+        },
+        {
+            "label": "premake",
+            "type": "shell",
+            "command": "premake5 vs2022 && premake5 vscode"
+        },
+        {
+            "label": "copy_resources",
+            "type": "shell",
+            "command": "python scripts/copy_resources.py"
+        }
+    ]
+}

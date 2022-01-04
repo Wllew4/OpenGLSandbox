@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "iostream": "cpp"
+    },
+	"git.ignoredRepositories": [
+		"./lib/glew",
+		"./lib/glfw",
+		"./lib/glm",
+	]
+}
