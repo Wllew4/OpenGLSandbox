@@ -39,15 +39,13 @@ project "Sandbox"
     libdirs
     {
         "lib/glfw/src/Release",
-        "lib/glew/lib/Release",
-        "lib/lua-5.4.2_lib64"
+        "lib/glew/lib/Release"
     }
     links
     {
         "glfw3",
         "glew",
-        "opengl32",
-        "liblua54"
+        "opengl32"
     }
 
     --Configurations

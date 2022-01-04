@@ -17,5 +17,5 @@ def copy_folder_to_bin(_from: str, _to: str = ""):
 
 copy_folder_to_bin('shaders')
 copy_folder_to_bin('sandbox')
-copy_folder_to_bin(os.path.join('src', 'lua'), 'lua')
-shutil.copy(os.path.join('lib', 'lua-5.4.2_lib64', 'lua54.dll'), bin_dir)
+# copy_folder_to_bin(os.path.join('src', 'lua'), 'lua')
+# shutil.copy(os.path.join('lib', 'lua-5.4.2_lib64', 'lua54.dll'), bin_dir)
