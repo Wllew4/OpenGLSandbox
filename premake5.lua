@@ -38,7 +38,7 @@ project "Sandbox"
     }
     libdirs
     {
-        "lib/glfw/lib-vc2019",
+        "lib/glfw/src/Release",
         "lib/glew/x64",
         "lib/lua-5.4.2_lib64"
     }
